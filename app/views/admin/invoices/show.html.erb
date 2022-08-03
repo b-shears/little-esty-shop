@@ -1,13 +1,29 @@
 
 
 Invoice ID: <%= @invoice.id %> <br>
-Invoice Status: <% if @invoice.status == "in_progress"%> <br>
+Invoice Status: <% if @invoice.status == "in progress"%> <br>
                     <%= "In Progress" %>
                 <% elsif @invoice.status == "cancelled" %>
                     <%= "Cancelled" %>
-                <% elsif @invoice.status == "completed" %>
+                <% else # @invoice.status == "completed" %>
                     <%= "Completed" %>
                 <% end %>
 Invoice <%= @invoice.created_at.strftime("Created On: %m/%d/%Y") %> <br>
 Customer Name: <%= @customer.first_name + " " + @customer.last_name %> <br>
 
+<section id="items" >
+    <% @invoiceitems.each do |item| %>
+        <div class="invoice_item-<%= item.id %>">
+           Item Name: <%= Item.find(item.item_id).name %> 
+           Quantity Ordered: <%= item.quantity %> 
+           Unit Price: <%= number_to_currency(item.unit_price)%> 
+           Item Status: <% if item.status == 'packaged' %> 
+                            <%= 'Packaged' %>
+                        <% elsif item.status == 'pending' %>
+                            <%= 'Pending' %>
+                        <% else #item.status == 'shipped' %>
+                            <%= 'Shipped' %>
+                        <% end %>
+        <% end %>
+        </div>
+</section>

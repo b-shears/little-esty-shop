@@ -73,7 +73,7 @@ RSpec.describe 'Merchant Items Index Page' do
           expect(page).to_not have_button("Enable" )
 
           click_button "Disable"
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
           item = Item.find(item1.id)
           expect(item.availability).to eq("disable")
         end

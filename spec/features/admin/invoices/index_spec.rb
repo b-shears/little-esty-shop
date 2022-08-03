@@ -42,15 +42,15 @@ RSpec.describe Invoice do
       visit admin_invoices_path
 
       within(".customer_invoice-#{invoice1.id}") do
-        expect(page).to have_link(invoice1.id)
+        expect(page).to have_link("#{invoice1.id}")
       end
 
       within(".customer_invoice-#{invoice2.id}") do
-        expect(page).to have_link(invoice2.id)
+        expect(page).to have_link("#{invoice2.id}")
       end
 
       within(".customer_invoice-#{invoice3.id}") do
-        expect(page).to have_link(invoice3.id)
+        expect(page).to have_link("#{invoice3.id}")
       end
     end
 
