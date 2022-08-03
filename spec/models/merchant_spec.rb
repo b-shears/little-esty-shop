@@ -68,7 +68,6 @@ RSpec.describe Merchant, type: :model do
 
       expect(merchant.ready_to_ship).to eq([invoice_item_1, invoice_item_2, invoice_item_6])
     end
-    end
   end
 
   describe '.top_5' do 
