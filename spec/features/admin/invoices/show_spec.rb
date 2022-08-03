@@ -96,7 +96,7 @@ RSpec.describe Invoice do
       invoice5 = Invoice.create!(status: 0, customer_id: customer5.id)
       invoice6 = Invoice.create!(status: 0, customer_id: customer6.id)
       
-      invoice_items1 = InvoiceItem.create!(invoice_id: invoice1.id, item_id: item1.id, quantity: 1, unit_price: 500, status: 0) #500
+      invoice_items1 = InvoiceItem.create!(invoice_id: invoice1.id, item_id: item1.id, quantity: 1, unit_price: 500, status: 2) #500
       invoice_items2 = InvoiceItem.create!(invoice_id: invoice1.id, item_id: item2.id, quantity: 2, unit_price: 200, status: 0) #400
       invoice_items3 = InvoiceItem.create!(invoice_id: invoice1.id, item_id: item3.id, quantity: 3, unit_price: 100, status: 1) #300
       invoice_items4 = InvoiceItem.create!(invoice_id: invoice2.id, item_id: item4.id, quantity: 2, unit_price: 100, status: 1) #200
@@ -116,7 +116,7 @@ RSpec.describe Invoice do
           expect(page).to have_content("Item Name: Camera")
           expect(page).to have_content("Quantity Ordered: 1")
           expect(page).to have_content("Unit Price: $500.00")
-          expect(page).to have_content("Item Status: Packaged")
+          expect(page).to have_content("Item Status: Shipped")
 
           expect(page).to have_content("Item Name: Bone")
           expect(page).to have_content("Quantity Ordered: 2")
