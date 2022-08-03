@@ -1,7 +1,6 @@
 class Merchant < ApplicationRecord
     validates_presence_of :name
-    # validates_presence_of :created_at
-    # validates_presence_of :updated_at
+
     has_many :items
     has_many :invoice_items, through: :items
     has_many :invoices, through: :invoice_items
@@ -22,6 +21,6 @@ class Merchant < ApplicationRecord
       .select('items.*, sum(invoice_items.quantity * invoice_items.unit_price) as revenue')
       .group(:id)
       .order(revenue: :desc)
-      .limit(5)   
+      .limit(5)
   end
 end

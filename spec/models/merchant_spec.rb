@@ -36,7 +36,7 @@ RSpec.describe Merchant, type: :model do
     end
   end
 
-  
+
 
   describe '.ready_to_ship' do
     it 'returns all items with invoice status pending or packaged' do
@@ -67,11 +67,13 @@ RSpec.describe Merchant, type: :model do
       invoice_item_6 = InvoiceItem.create!(quantity: 1, unit_price: 2, status: 1, created_at: Time.now, updated_at: Time.now, item_id: item_1.id, invoice_id: invoice_6.id)
 
       expect(merchant.ready_to_ship).to eq([invoice_item_1, invoice_item_2, invoice_item_6])
+
+      end
     end
   end
 
-  describe '.top_5' do 
-  it 'returns the top 5 items be revenue' do 
+  describe '.top_5' do
+  it 'returns the top 5 items be revenue' do
     merchant1 = Merchant.create!(name: "Josey Wales", created_at: Time.now, updated_at: Time.now)
     merchant2 = Merchant.create!(name: "Britches Eckles", created_at: Time.now, updated_at: Time.now)
 
@@ -111,6 +113,5 @@ RSpec.describe Merchant, type: :model do
     transaction6 = Transaction.create!(credit_card_number: 5929135, result: 1, invoice_id: invoice6.id)
 
     expect(merchant1.top_5_items).to eq([item6, item5, item1, item2, item3])
-  end 
- end 
+  end
 end
