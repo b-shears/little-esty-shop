@@ -1,7 +1,7 @@
 
 
 Invoice ID: <%= @invoice.id %> <br>
-Invoice Status: <% if @invoice.status == "in progress"%> <br>
+Invoice Status: <% if @invoice.status == "in_progress" %> <br>
                     <%= "In Progress" %>
                 <% elsif @invoice.status == "cancelled" %>
                     <%= "Cancelled" %>

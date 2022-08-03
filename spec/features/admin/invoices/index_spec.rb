@@ -71,7 +71,7 @@ RSpec.describe Invoice do
       visit admin_invoices_path
 
       within(".customer_invoice-#{invoice1.id}") do
-        expect(page).to have_link(invoice1.id)
+        expect(page).to have_link("#{invoice1.id}")
         click_link "#{invoice1.id}"
         expect(current_path).to eq("/admin/invoices/#{invoice1.id}")
       end
