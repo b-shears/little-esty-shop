@@ -9,13 +9,11 @@ RSpec.describe 'admin merchants index page' do
 
   it 'displays all of the merchants' do
     visit '/admin/merchants'
-    save_and_open_page
+
     expect(page).to have_content(@merchant_1.name)
     expect(page).to have_content(@merchant_2.name)
     expect(page).to have_content(@merchant_3.name)
 
-    # click_link "#{@merchant_1.name}"
-    # expect(current_path).to eq("/admin/merchants/#{@merchant_1.id}")
   end
 
   it 'has an enabled and disable button next to each merchant based on category' do
@@ -26,7 +24,7 @@ RSpec.describe 'admin merchants index page' do
         expect(page).to have_content("Al Capone")
         click_button 'Disable'
         expect(current_path).to eq('/admin/merchants')
-      
+
       end
 
       within (".disabled_merchant-#{@merchant_2.id}") do
